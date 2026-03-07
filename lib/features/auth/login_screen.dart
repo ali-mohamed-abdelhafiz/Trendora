@@ -5,7 +5,7 @@ import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/core/utils/storage_helper.dart';
 import 'package:ecommerce_app/core/widgets/custom_text_field.dart';
 import 'package:ecommerce_app/core/widgets/loading_widget.dart';
-import 'package:ecommerce_app/core/widgets/primay_button_widget.dart';
+import 'package:ecommerce_app/core/widgets/primary_button_widget.dart';
 import 'package:ecommerce_app/core/utils/snak_bar_widget.dart';
 import 'package:ecommerce_app/core/widgets/spacing_widgets.dart';
 import 'package:ecommerce_app/features/auth/cubit/auth_cubit.dart';
@@ -106,11 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           listener: (context, state) {
                             if (state is AuthFailureState) {
                               showMsg(state.message, context, isError: true);
-                            }
-                            if (state is AuthFailureState) {
-                              showMsg(state.message, context, isError: true);
-                            }
-                            if (state is AuthSuccesState) {
+                            } else if (state is AuthSuccesState) {
                               showMsg(state.message, context);
                               context
                                   .pushReplacementNamed(AppRoutes.mainScreen);
@@ -124,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: 200,
                               ));
                             }
-                            return PrimayButtonWidget(
+                            return PrimrayButtonWidget(
                               buttonText: "Sign in",
                               onPress: () {
                                 if (formKey.currentState!.validate()) {
@@ -132,10 +128,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                       email: username.text,
                                       password: password.text);
                                 }
-                                // context.pushNamed(AppRoutes.mainScreen);
-                                //    if (formKey.currentState!.validate()) {
-                                //   GoRouter.of(context).pushNamed(AppRoutes.verifyOtpScreen);
-                                //  }
                               },
                             );
                           },

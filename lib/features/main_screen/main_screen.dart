@@ -1,9 +1,8 @@
 import 'package:ecommerce_app/core/styling/app_colors.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/core/utils/storage_helper.dart';
 import 'package:ecommerce_app/features/account/account_screen.dart';
-import 'package:ecommerce_app/features/auth/cubit/auth_cubit.dart';
 import 'package:ecommerce_app/features/cart/cart_screen.dart';
+import 'package:ecommerce_app/features/cart/cubit/cart_cubit.dart';
 import 'package:ecommerce_app/features/home_screen/cubit/category_cubit.dart';
 import 'package:ecommerce_app/features/home_screen/cubit/product_cubit.dart';
 import 'package:ecommerce_app/features/home_screen/home_screen.dart';
@@ -53,6 +52,9 @@ class _MainScreenState extends State<MainScreen> {
             setState(() {
               currentIndex = value;
             });
+            if (value == 1) {
+              context.read<CartCubit>().fetchCarts();
+            }
           },
           items: [
             BottomNavigationBarItem(

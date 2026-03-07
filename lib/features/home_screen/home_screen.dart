@@ -87,8 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: state.categories
                           .map((e) => CategoryItemWidget(
                                 categoryName: e.name,
-                                isSelected:
-                                    selectedCategory == e.name ? true : false,
+                                isSelected: selectedCategory == e.name,
                                 onTap: () {
                                   setState(() {
                                     selectedCategory = e.name;

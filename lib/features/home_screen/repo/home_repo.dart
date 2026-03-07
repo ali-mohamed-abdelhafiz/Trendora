@@ -43,8 +43,6 @@ class HomeRepo {
     int pageSize = 20,
   }) async {
     try {
-      // debug logging of query parameters
-      log('getProducts called with searchTerm="$searchTerm" category="$category"');
       Response response = await _dioHelper.getRequest(
         endPoint: ApiEndpoints.productsEndpoint,
         query: {

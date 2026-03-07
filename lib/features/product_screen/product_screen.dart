@@ -1,9 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/styling/app_styles.dart';
-import 'package:ecommerce_app/core/widgets/primay_button_widget.dart';
+import 'package:ecommerce_app/core/utils/snak_bar_widget.dart';
+import 'package:ecommerce_app/core/widgets/primary_button_widget.dart';
 import 'package:ecommerce_app/core/widgets/spacing_widgets.dart';
 import 'package:ecommerce_app/features/home_screen/models/product_model.dart';
+import 'package:ecommerce_app/features/product_screen/cubit/add_product_cubit.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -27,15 +31,11 @@ class ProductScreen extends StatelessWidget {
                 children: [
                   const HeightSpace(20),
                   CachedNetworkImage(
-                      errorWidget: (context, url, error) => SizedBox(
-                            width: 150.w,
-                            height: 150.h,
-                            child: const Icon(
-                              Icons.error_outline,
-                              color: Colors.red,
-                            ),
-                          ),
-                      imageUrl: product.coverPictureUrl!),
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                      imageUrl: product.coverPictureUrl ?? ''),
                   const HeightSpace(12),
                   Text(
                     product.name,
@@ -104,15 +104,36 @@ class ProductScreen extends StatelessWidget {
                         ],
                       ),
                       const WidthSpace(16),
-                      PrimayButtonWidget(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        buttonText: "Add To Cart",
-                        icon: Icon(
-                          Icons.shopping_cart,
-                          color: Colors.white,
-                          size: 16.sp,
-                        ),
-                        onPress: () {},
+                      BlocConsumer<AddProductCubit, AddProductState>(
+                        listener: (context, state) {
+                          if (state is AddProductSuccess) {
+                            showMsg(state.model.message, context);
+                          } else if (state is AddProductError) {
+                            showMsg(state.error.firstErrorMessage, context,
+                                isError: true);
+                          }
+                        },
+                        builder: (context, state) {
+                          final isLoading = state is AddProductLoading;
+                          return PrimrayButtonWidget(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            buttonText: isLoading ? "Adding..." : "Add To Cart",
+                            icon: Icon(
+                              Icons.shopping_cart,
+                              color: Colors.white,
+                              size: 16.sp,
+                            ),
+                            isLoading: isLoading,
+                            onPress: () {
+                              if (!isLoading) {
+                                context.read<AddProductCubit>().addProduct(
+                                      productId: product.id,
+                                      quantity: 1,
+                                    );
+                              }
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),

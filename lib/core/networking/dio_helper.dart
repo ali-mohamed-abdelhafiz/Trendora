@@ -63,4 +63,18 @@ class DioHelper {
       rethrow;
     }
   }
+
+  deleteRequest({
+    required String endPoint,
+  }) async {
+    try {
+      final response = await dio!.delete(endPoint);
+      return response;
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return e.response!;
+      }
+      rethrow;
+    }
+  }
 }
