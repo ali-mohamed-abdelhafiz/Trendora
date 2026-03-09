@@ -77,4 +77,19 @@ class DioHelper {
       rethrow;
     }
   }
+
+  putRequest({
+    required String endPoint,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      final response = await dio!.put(endPoint, data: data);
+      return response;
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return e.response!;
+      }
+      rethrow;
+    }
+  }
 }

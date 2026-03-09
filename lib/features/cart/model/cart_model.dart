@@ -40,6 +40,34 @@ class CartData {
       required this.finalPricePerUnit,
       required this.totalPrice});
 
+  CartData copyWith({
+    String? itemId,
+    String? productId,
+    String? productName,
+    String? productCoverUrl,
+    int? productStock,
+    num? weightInGrams,
+    int? quantity,
+    num? discountPercentage,
+    num? basePricePerUnit,
+    num? finalPricePerUnit,
+    num? totalPrice,
+  }) {
+    return CartData(
+      itemId: itemId ?? this.itemId,
+      productId: productId ?? this.productId,
+      productName: productName ?? this.productName,
+      productCoverUrl: productCoverUrl ?? this.productCoverUrl,
+      productStock: productStock ?? this.productStock,
+      weightInGrams: weightInGrams ?? this.weightInGrams,
+      quantity: quantity ?? this.quantity,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      basePricePerUnit: basePricePerUnit ?? this.basePricePerUnit,
+      finalPricePerUnit: finalPricePerUnit ?? this.finalPricePerUnit,
+      totalPrice: totalPrice ?? this.totalPrice,
+    );
+  }
+
   factory CartData.fromJson(Map<String, dynamic> json) {
     return CartData(
         itemId: json['itemId'] ?? '',

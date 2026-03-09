@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/features/cart/model/cart_model.dart';
 import 'package:ecommerce_app/features/cart/repo/cart_repo.dart';
@@ -9,7 +11,6 @@ class CartCubit extends Cubit<CartState> {
   CartCubit(this._cartRepo) : super(CartInitial());
   final CartRepo _cartRepo;
 
-  // احتفظ بالـ list الحالية هنا
   List<CartData> _currentCarts = [];
 
   void fetchCarts() async {
@@ -18,8 +19,8 @@ class CartCubit extends Cubit<CartState> {
     response.fold(
       (ifLeft) => emit(CartError(ifLeft)),
       (ifRight) {
-        _currentCarts = ifRight; // احفظ الـ list
-        emit(CartSuccess(ifRight));
+        _currentCarts = ifRight;
+        emit(_buildCartSuccess(ifRight));
       },
     );
   }
@@ -32,14 +33,14 @@ class CartCubit extends Cubit<CartState> {
 
     _currentCarts = updatedCarts;
 
-    emit(CartSuccess(updatedCarts));
+    emit(_buildCartSuccess(updatedCarts));
 
     final result = await _cartRepo.deleteCart(id: id);
 
     result.fold(
       (error) {
         _currentCarts = oldCarts;
-        emit(CartSuccess(oldCarts));
+        emit(_buildCartSuccess(oldCarts));
         emit(DeleteCartError(error));
       },
       (success) {
@@ -47,20 +48,53 @@ class CartCubit extends Cubit<CartState> {
       },
     );
   }
+
+  CartSuccess _buildCartSuccess(List<CartData> carts) {
+    double subTotal =
+        carts.fold(0, (sum, item) => sum + item.totalPrice * item.quantity);
+    double vat = subTotal * 0.16;
+    double shipping = subTotal > 1000 ? 0 : 50;
+    double total = subTotal + vat + shipping;
+
+    return CartSuccess(
+      carts,
+      subTotal: subTotal,
+      vat: vat,
+      shippingFees: shipping,
+      total: total,
+    );
+  }
+
+  Future<void> incrementCartItem(String id) async {
+    final oldCarts = List<CartData>.from(_currentCarts);
+    print("Increment called for id: $id");
+    final index = _currentCarts.indexWhere((item) => item.itemId == id);
+    print("Index found: $index");
+    if (index == -1) return;
+
+    // تحديث محلي سريع للـ UI (Optimistic Update)
+    _currentCarts[index] = _currentCarts[index]
+        .copyWith(quantity: _currentCarts[index].quantity + 1);
+    emit(_buildCartSuccess(List<CartData>.from(_currentCarts)));
+
+    // إرسال التحديث للسيرفر
+    final result = await _cartRepo.updateCartQuantity(
+      id: id,
+      quantity: _currentCarts[index].quantity,
+    );
+
+    result.fold(
+      (error) {
+        // لو فيه خطأ ارجع النسخة القديمة
+        _currentCarts = oldCarts;
+        emit(_buildCartSuccess(List<CartData>.from(oldCarts)));
+        emit(UpdateCartError(error));
+      },
+      (data) {
+        // بدل محاولة تعيين data كامل، خليك على النسخة المحلية
+        emit(_buildCartSuccess(List<CartData>.from(_currentCarts)));
+        emit(UpdateCartSuccess());
+      },
+    );
+  }
 }
-  
-  // Future updateCartQuantity(String id, int quantity) async {
-    //   emit(UpdateCartLoading());
-
-    //   final result =
-    //       await _cartRepo.updateCartQuantity(id: id, quantity: quantity);
-
-    //   result.fold(
-    //     (error) {
-    //       emit(UpdateCartError(error));
-    //     },
-    //     (data) {
-    //       emit(UpdateCartSuccess());
-    //     },
-    //   );
-    // }

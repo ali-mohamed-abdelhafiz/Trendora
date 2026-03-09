@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/networking/api_endpoints.dart';
@@ -49,9 +51,9 @@ class CartRepo {
     required int quantity,
   }) async {
     try {
-      Response response = await _dioHelper.postRequest(
+      Response response = await _dioHelper.putRequest(
         endPoint: "${ApiEndpoints.cartEndpoint}/$id",
-        data: {'quantity': quantity},
+        data: {'id': id, 'quantity': quantity},
       );
 
       if (response.statusCode == 200) {

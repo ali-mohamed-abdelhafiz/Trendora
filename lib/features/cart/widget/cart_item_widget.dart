@@ -88,10 +88,9 @@ class CartItemWidget extends StatelessWidget {
                       Row(
                         children: [
                           InkWell(
-                            // onTap: () => context
-                            //     .read<CartCubit>()
-                            //     .updateCartQuantity(
-                            //         cartData.itemId, cartData.quantity + 1),
+                            onTap: () => context
+                                .read<CartCubit>()
+                                .incrementCartItem(cartData.itemId),
                             child: Container(
                               width: 24.w,
                               height: 24.h,
