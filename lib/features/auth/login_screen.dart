@@ -28,16 +28,18 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    username = TextEditingController(text: 'ali5553754@gmail.com');
-    password = TextEditingController(text: 'Ali1234!');
-    getIt<StorageHelper>().getAccessToken().then(
-      (value) {
-        if (value.isNotEmpty) {
-          context.pushReplacementNamed(AppRoutes.mainScreen);
-        }
-      },
-    );
+    username = TextEditingController();
+    password = TextEditingController();
+
     getIt<StorageHelper>().getRefreshToken();
+  }
+
+  @override
+  void dispose() {
+    username.dispose();
+
+    password.dispose();
+    super.dispose();
   }
 
   @override

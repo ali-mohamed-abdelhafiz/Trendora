@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/styling/app_colors.dart';
 import 'package:ecommerce_app/core/styling/app_styles.dart';
+import 'package:ecommerce_app/core/utils/service_locator.dart';
+import 'package:ecommerce_app/core/utils/storage_helper.dart';
 import 'package:ecommerce_app/core/widgets/custom_text_field.dart';
 import 'package:ecommerce_app/core/widgets/loading_widget.dart';
 import 'package:ecommerce_app/core/widgets/spacing_widgets.dart';
@@ -11,7 +15,9 @@ import 'package:ecommerce_app/features/home_screen/widgets/product_item_widget.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -62,10 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           searchTerm: value, category: selectedCategory);
                     }
                   }),
-              const WidthSpace(8),
+              const WidthSpace(3),
               Container(
-                width: 60.w,
-                height: 65.h,
+                width: 65.w,
+                height: 60.h,
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
                   borderRadius: BorderRadius.circular(8.r),
@@ -113,9 +119,27 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocBuilder<ProductCubit, ProductState>(
             builder: (context, state) {
               if (state is ProductLoading) {
-                return LoadingWidget(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  width: MediaQuery.of(context).size.width,
+                return Expanded(
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: GridView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: 150.w,
+                          height: 150.w,
+                          color: Colors.red,
+                        );
+                      },
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 8.h,
+                        crossAxisSpacing: 16.w,
+                        childAspectRatio: 0.7,
+                      ),
+                    ),
+                  ),
                 );
               } else if (state is ProductError) {
                 return Center(child: Text(state.message));
@@ -129,26 +153,37 @@ class _HomeScreenState extends State<HomeScreen> {
                       setState(() {});
                       context.read<ProductCubit>().fetchProducts();
                     },
-                    child: GridView.builder(
-                      itemCount: state.products.length,
-                      itemBuilder: (context, index) {
-                        final product = state.products[index];
-                        return ProductItemWidget(
-                          title: product.name,
-                          price: product.price.toString(),
-                          imageUrl: product.coverPictureUrl!,
-                          onTap: () {
-                            GoRouter.of(context).pushNamed(
-                                AppRoutes.productScreen,
-                                extra: product);
-                          },
-                        );
-                      },
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 8.sp,
-                        crossAxisSpacing: 16.sp,
-                        childAspectRatio: 0.8,
+                    child: AnimationLimiter(
+                      child: GridView.builder(
+                        itemCount: state.products.length,
+                        itemBuilder: (context, index) {
+                          final product = state.products[index];
+                          return AnimationConfiguration.staggeredGrid(
+                            position: index,
+                            duration: const Duration(milliseconds: 675),
+                            columnCount: 2,
+                            child: SlideAnimation(
+                              child: FadeInAnimation(
+                                child: ProductItemWidget(
+                                  title: product.name,
+                                  price: product.price.toString(),
+                                  imageUrl: product.coverPictureUrl!,
+                                  onTap: () {
+                                    GoRouter.of(context).pushNamed(
+                                        AppRoutes.productScreen,
+                                        extra: product);
+                                  },
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 8.h,
+                          crossAxisSpacing: 16.w,
+                          childAspectRatio: 0.7,
+                        ),
                       ),
                     ),
                   ),

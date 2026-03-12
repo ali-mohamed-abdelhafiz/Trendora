@@ -35,23 +35,27 @@ class ProductItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             HeightSpace(12.h),
             ClipRRect(
                 borderRadius: BorderRadius.circular(8.r),
-                child: CachedNetworkImage(
-                  errorWidget: (context, url, error) => SizedBox(
+                child: Hero(
+                  tag: title,
+                  child: CachedNetworkImage(
+                    errorWidget: (context, url, error) => SizedBox(
+                      width: 150.w,
+                      height: 150.h,
+                      child: const Icon(
+                        Icons.error_outline,
+                        color: Colors.red,
+                      ),
+                    ),
+                    imageUrl: imageUrl,
                     width: 150.w,
                     height: 150.h,
-                    child: const Icon(
-                      Icons.error_outline,
-                      color: Colors.red,
-                    ),
+                    fit: BoxFit.cover,
                   ),
-                  imageUrl: imageUrl,
-                  width: 150.w,
-                  height: 150.h,
-                  fit: BoxFit.cover,
                 )),
             const HeightSpace(8),
             Padding(
@@ -59,7 +63,6 @@ class ProductItemWidget extends StatelessWidget {
               child:
                   Text(title, maxLines: 1, style: AppStyles.black15BoldStyle),
             ),
-            const HeightSpace(8),
             Align(
               alignment: AlignmentDirectional.centerStart,
               child: Padding(

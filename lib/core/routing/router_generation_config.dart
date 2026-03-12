@@ -9,12 +9,18 @@ import 'package:ecommerce_app/features/home_screen/models/product_model.dart';
 import 'package:ecommerce_app/features/main_screen/main_screen.dart';
 import 'package:ecommerce_app/features/product_screen/cubit/add_product_cubit.dart';
 import 'package:ecommerce_app/features/product_screen/product_screen.dart';
+import 'package:ecommerce_app/features/splash_screen/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
   static GoRouter goRouter =
-      GoRouter(initialLocation: AppRoutes.loginScreen, routes: [
+      GoRouter(initialLocation: AppRoutes.splashScreen, routes: [
+    GoRoute(
+      name: AppRoutes.splashScreen,
+      path: AppRoutes.splashScreen,
+      builder: (context, state) => const SplashScreen(),
+    ),
     GoRoute(
       name: AppRoutes.loginScreen,
       path: AppRoutes.loginScreen,

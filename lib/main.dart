@@ -19,11 +19,17 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       builder: (context, child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: AppThemes.lightTheme,
-          routerConfig: RouterGenerationConfig.goRouter,
+        return GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: AppThemes.lightTheme,
+            routerConfig: RouterGenerationConfig.goRouter,
+            builder: (context, child) => SafeArea(child: child!),
+          ),
         );
       },
     );

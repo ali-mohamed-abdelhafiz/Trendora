@@ -1,5 +1,6 @@
 class AppAssets {
   static const _iconsPath = 'assets/icons/';
+  static const _imagePath = 'assets/images/';
   static const _lottiePath = 'assets/lottie/';
 
   static const String box = '${_iconsPath}Box.png';
@@ -13,4 +14,5 @@ class AppAssets {
   static const String help = '${_iconsPath}Question.png';
 
   static const String loadingLottie = '${_lottiePath}loading.json';
+  static const String logo = '${_imagePath}logo.png';
 }

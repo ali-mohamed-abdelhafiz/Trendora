@@ -30,12 +30,15 @@ class ProductScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const HeightSpace(20),
-                  CachedNetworkImage(
-                      placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                      imageUrl: product.coverPictureUrl ?? ''),
+                  Hero(
+                    tag: product.name,
+                    child: CachedNetworkImage(
+                        placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                        imageUrl: product.coverPictureUrl ?? ''),
+                  ),
                   const HeightSpace(12),
                   Text(
                     product.name,

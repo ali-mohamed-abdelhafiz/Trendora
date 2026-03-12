@@ -145,9 +145,7 @@ class CartScreen extends StatelessWidget {
         buildWhen: (previous, current) =>
             current is CartSuccess ||
             current is CartLoading ||
-            current is CartError ||
-            current is DeleteCartSuccess ||
-            current is UpdateCartSuccess,
+            current is CartError,
         builder: (context, state) {
           if (state is CartLoading) {
             return LoadingWidget(

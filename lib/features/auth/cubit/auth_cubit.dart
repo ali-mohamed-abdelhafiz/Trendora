@@ -28,4 +28,8 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthSuccesState('Login Successfully'));
     });
   }
+
+  void logout() {
+    getIt<StorageHelper>().removeToken();
+  }
 }
