@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/routing/router_generation_config.dart';
 import 'package:ecommerce_app/core/styling/theme_data.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
