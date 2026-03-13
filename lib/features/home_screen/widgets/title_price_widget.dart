@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/core/styling/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitlePriceWidget extends StatelessWidget {

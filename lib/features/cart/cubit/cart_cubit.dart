@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/features/cart/model/cart_model.dart';
 import 'package:ecommerce_app/features/cart/repo/cart_repo.dart';
@@ -67,9 +65,7 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> incrementCartItem(String id) async {
     final oldCarts = List<CartData>.from(_currentCarts);
-    print("Increment called for id: $id");
     final index = _currentCarts.indexWhere((item) => item.itemId == id);
-    print("Index found: $index");
     if (index == -1) return;
 
     // تحديث محلي سريع للـ UI (Optimistic Update)

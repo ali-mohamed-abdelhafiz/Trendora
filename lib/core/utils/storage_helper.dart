@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class StorageHelper {
   final storage = const FlutterSecureStorage(
     aOptions: AndroidOptions(
+      // ignore: deprecated_member_use
       encryptedSharedPreferences: true,
     ),
   );

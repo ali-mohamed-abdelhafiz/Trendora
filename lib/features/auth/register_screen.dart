@@ -23,7 +23,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     username = TextEditingController();
     password = TextEditingController();

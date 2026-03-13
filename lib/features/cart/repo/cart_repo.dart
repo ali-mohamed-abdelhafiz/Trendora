@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/networking/api_endpoints.dart';
@@ -41,7 +39,6 @@ class CartRepo {
         return const Left("Something Went Wrong");
       }
     } catch (e) {
-      print("DELETE ERROR: $e");
       return Left(ApiErrorHandler2.handle(e));
     }
   }

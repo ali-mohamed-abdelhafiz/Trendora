@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/core/routing/app_routes.dart';
-import 'package:ecommerce_app/core/routing/router_generation_config.dart';
 import 'package:ecommerce_app/core/styling/app_assets.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/core/utils/storage_helper.dart';

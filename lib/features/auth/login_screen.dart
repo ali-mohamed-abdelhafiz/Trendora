@@ -46,116 +46,116 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 22.w),
-                child: Form(
-                    key: formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const HeightSpace(28),
-                        SizedBox(
-                          width: 335.w,
-                          child: Text(
-                            "Login To Your Account",
-                            style: AppStyles.primaryHeadLinesStyle,
-                          ),
+            body: SingleChildScrollView(
+      child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 22.w),
+          child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const HeightSpace(28),
+                  SizedBox(
+                    width: 335.w,
+                    child: Text(
+                      "Login To Your Account",
+                      style: AppStyles.primaryHeadLinesStyle,
+                    ),
+                  ),
+                  const HeightSpace(8),
+                  SizedBox(
+                    width: 335.w,
+                    child: Text(
+                      "it's great to see you again",
+                      style: AppStyles.grey12MediumStyle,
+                    ),
+                  ),
+                  const HeightSpace(32),
+                  Text("User Name", style: AppStyles.black16w500Style),
+                  const HeightSpace(8),
+                  CustomTextField(
+                    controller: username,
+                    hintText: "Enter Your User Name",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Your User Name";
+                      }
+                      return null;
+                    },
+                  ),
+                  const HeightSpace(16),
+                  Text("Password", style: AppStyles.black16w500Style),
+                  const HeightSpace(8),
+                  CustomTextField(
+                    isPassword: true,
+                    hintText: "Enter Your Password",
+                    controller: password,
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye,
+                      color: AppColors.greyColor,
+                      size: 20.sp,
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Your Password";
+                      }
+                      if (value.length < 6) {
+                        return "Password must be at least 6 characters";
+                      }
+                      return null;
+                    },
+                  ),
+                  const HeightSpace(55),
+                  BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is AuthFailureState) {
+                        showMsg(state.message, context, isError: true);
+                      } else if (state is AuthSuccesState) {
+                        showMsg(state.message, context);
+                        context.pushReplacementNamed(AppRoutes.mainScreen);
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is AuthLoadingState) {
+                        return const Center(
+                            child: LoadingWidget(
+                          height: 100,
+                          width: 200,
+                        ));
+                      }
+                      return PrimrayButtonWidget(
+                        buttonText: "Sign in",
+                        onPress: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<AuthCubit>().login(
+                                email: username.text, password: password.text);
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  const HeightSpace(24),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        context.pushNamed(AppRoutes.registerScreen);
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Don't have an account? ",
+                          style: AppStyles.black16w500Style
+                              .copyWith(color: AppColors.secondaryColor),
+                          children: [
+                            TextSpan(
+                                text: "Join", style: AppStyles.black15BoldStyle)
+                          ],
                         ),
-                        const HeightSpace(8),
-                        SizedBox(
-                          width: 335.w,
-                          child: Text(
-                            "it's great to see you again",
-                            style: AppStyles.grey12MediumStyle,
-                          ),
-                        ),
-                        const HeightSpace(32),
-                        Text("User Name", style: AppStyles.black16w500Style),
-                        const HeightSpace(8),
-                        CustomTextField(
-                          controller: username,
-                          hintText: "Enter Your User Name",
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Enter Your User Name";
-                            }
-                            return null;
-                          },
-                        ),
-                        const HeightSpace(16),
-                        Text("Password", style: AppStyles.black16w500Style),
-                        const HeightSpace(8),
-                        CustomTextField(
-                          hintText: "Enter Your Password",
-                          controller: password,
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye,
-                            color: AppColors.greyColor,
-                            size: 20.sp,
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Enter Your Password";
-                            }
-                            if (value.length < 6) {
-                              return "Password must be at least 6 characters";
-                            }
-                            return null;
-                          },
-                        ),
-                        const HeightSpace(55),
-                        BlocConsumer<AuthCubit, AuthState>(
-                          listener: (context, state) {
-                            if (state is AuthFailureState) {
-                              showMsg(state.message, context, isError: true);
-                            } else if (state is AuthSuccesState) {
-                              showMsg(state.message, context);
-                              context
-                                  .pushReplacementNamed(AppRoutes.mainScreen);
-                            }
-                          },
-                          builder: (context, state) {
-                            if (state is AuthLoadingState) {
-                              return const Center(
-                                  child: LoadingWidget(
-                                height: 100,
-                                width: 200,
-                              ));
-                            }
-                            return PrimrayButtonWidget(
-                              buttonText: "Sign in",
-                              onPress: () {
-                                if (formKey.currentState!.validate()) {
-                                  context.read<AuthCubit>().login(
-                                      email: username.text,
-                                      password: password.text);
-                                }
-                              },
-                            );
-                          },
-                        ),
-                        const Spacer(),
-                        Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              context.pushNamed(AppRoutes.registerScreen);
-                            },
-                            child: RichText(
-                              text: TextSpan(
-                                text: "Don't have an account? ",
-                                style: AppStyles.black16w500Style
-                                    .copyWith(color: AppColors.secondaryColor),
-                                children: [
-                                  TextSpan(
-                                      text: "Join",
-                                      style: AppStyles.black15BoldStyle)
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        const HeightSpace(16),
-                      ],
-                    )))));
+                      ),
+                    ),
+                  ),
+                  const HeightSpace(16),
+                ],
+              ))),
+    )));
   }
 }
