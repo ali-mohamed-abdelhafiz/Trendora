@@ -5,7 +5,7 @@ Trendora is a professional e-commerce mobile application developed using Flutter
 ## Download App
 
 Download the latest version for Android:
-[Download APK](https://drive.google.com/file/d/1ZsZkhClbiSY8yXgRrt022mLEzq4AR9zO/view?usp=sharing)
+[Download APK](https://drive.google.com/file/d/1j3BnCI9xB9cCWT8fxa_P97msJosnCPh6/view)
 
 ## Project Overview
 
