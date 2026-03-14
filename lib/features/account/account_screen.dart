@@ -5,7 +5,6 @@ import 'package:tendora/core/widgets/primary_button_widget.dart';
 import 'package:tendora/core/widgets/spacing_widgets.dart';
 import 'package:tendora/features/account/widgets/account_item_widget.dart';
 import 'package:tendora/features/auth/cubit/auth_cubit.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

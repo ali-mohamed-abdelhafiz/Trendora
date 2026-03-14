@@ -38,7 +38,7 @@ class PrimrayButtonWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(bordersRadius ?? 8.r),
         ),
-        fixedSize: Size(width ?? 331.w, height ?? 75.h),
+        fixedSize: Size(width ?? 331.w, height ?? 70.h),
       ),
       child: isLoading
           ? SizedBox(
