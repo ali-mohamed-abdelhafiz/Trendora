@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ecommerce_app/features/auth/model/error_model.dart';
+import 'package:tendora/features/auth/model/error_model.dart';
 
 class ApiErrorHandler {
   static ErrorModel handle(dynamic error) {

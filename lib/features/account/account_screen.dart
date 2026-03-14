@@ -1,10 +1,10 @@
-import 'package:ecommerce_app/core/routing/app_routes.dart';
-import 'package:ecommerce_app/core/styling/app_assets.dart';
-import 'package:ecommerce_app/core/styling/app_styles.dart';
-import 'package:ecommerce_app/core/widgets/primary_button_widget.dart';
-import 'package:ecommerce_app/core/widgets/spacing_widgets.dart';
-import 'package:ecommerce_app/features/account/widgets/account_item_widget.dart';
-import 'package:ecommerce_app/features/auth/cubit/auth_cubit.dart';
+import 'package:tendora/core/routing/app_routes.dart';
+import 'package:tendora/core/styling/app_assets.dart';
+import 'package:tendora/core/styling/app_styles.dart';
+import 'package:tendora/core/widgets/primary_button_widget.dart';
+import 'package:tendora/core/widgets/spacing_widgets.dart';
+import 'package:tendora/features/account/widgets/account_item_widget.dart';
+import 'package:tendora/features/auth/cubit/auth_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

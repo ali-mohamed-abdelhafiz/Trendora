@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:ecommerce_app/core/networking/api_endpoints.dart';
-import 'package:ecommerce_app/core/networking/api_error_handler.dart';
-import 'package:ecommerce_app/core/networking/dio_helper.dart';
-import 'package:ecommerce_app/features/cart/model/cart_model.dart';
+import 'package:tendora/core/networking/api_endpoints.dart';
+import 'package:tendora/core/networking/api_error_handler.dart';
+import 'package:tendora/core/networking/dio_helper.dart';
+import 'package:tendora/features/cart/model/cart_model.dart';
 
 class CartRepo {
   final DioHelper _dioHelper;

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_app/features/auth/model/error_model.dart';
-import 'package:ecommerce_app/features/product_screen/model/add_product_model.dart';
-import 'package:ecommerce_app/features/product_screen/repo/add_product_repo.dart';
+import 'package:tendora/features/auth/model/error_model.dart';
+import 'package:tendora/features/product_screen/model/add_product_model.dart';
+import 'package:tendora/features/product_screen/repo/add_product_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'add_product_state.dart';

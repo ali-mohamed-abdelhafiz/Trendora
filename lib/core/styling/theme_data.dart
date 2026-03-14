@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/styling/app_colors.dart';
-import 'package:ecommerce_app/core/styling/app_fonts.dart';
-import 'package:ecommerce_app/core/styling/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_transitions/go_transitions.dart';
+import 'package:tendora/core/styling/app_colors.dart';
+import 'package:tendora/core/styling/app_fonts.dart';
+import 'package:tendora/core/styling/app_styles.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(

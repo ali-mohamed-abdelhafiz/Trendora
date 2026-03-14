@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/core/styling/app_colors.dart';
-import 'package:ecommerce_app/core/styling/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tendora/core/styling/app_colors.dart';
+import 'package:tendora/core/styling/app_fonts.dart';
 
 class AppStyles {
   static TextStyle primaryHeadLinesStyle = TextStyle(

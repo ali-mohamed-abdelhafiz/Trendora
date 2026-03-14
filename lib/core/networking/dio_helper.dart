@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:ecommerce_app/core/networking/api_endpoints.dart';
-import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/core/utils/storage_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:tendora/core/networking/api_endpoints.dart';
+import 'package:tendora/core/utils/service_locator.dart';
+import 'package:tendora/core/utils/storage_helper.dart';
 
 class DioHelper {
   Dio? dio;

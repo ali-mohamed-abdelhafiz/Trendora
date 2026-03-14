@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/core/styling/app_styles.dart';
-import 'package:ecommerce_app/core/utils/snak_bar_widget.dart';
-import 'package:ecommerce_app/core/widgets/primary_button_widget.dart';
-import 'package:ecommerce_app/core/widgets/spacing_widgets.dart';
-import 'package:ecommerce_app/features/home_screen/models/product_model.dart';
-import 'package:ecommerce_app/features/product_screen/cubit/add_product_cubit.dart';
+import 'package:tendora/core/styling/app_styles.dart';
+import 'package:tendora/core/utils/snak_bar_widget.dart';
+import 'package:tendora/core/widgets/primary_button_widget.dart';
+import 'package:tendora/core/widgets/spacing_widgets.dart';
+import 'package:tendora/features/home_screen/models/product_model.dart';
+import 'package:tendora/features/product_screen/cubit/add_product_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

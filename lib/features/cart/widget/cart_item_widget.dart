@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/core/styling/app_styles.dart';
-import 'package:ecommerce_app/core/widgets/spacing_widgets.dart';
-import 'package:ecommerce_app/features/cart/cubit/cart_cubit.dart';
-import 'package:ecommerce_app/features/cart/model/cart_model.dart';
+import 'package:tendora/core/styling/app_styles.dart';
+import 'package:tendora/core/widgets/spacing_widgets.dart';
+import 'package:tendora/features/cart/cubit/cart_cubit.dart';
+import 'package:tendora/features/cart/model/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

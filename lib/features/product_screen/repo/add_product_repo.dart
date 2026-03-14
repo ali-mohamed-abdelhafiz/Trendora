@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart' show Either, Left, Right;
 import 'package:dio/dio.dart';
-import 'package:ecommerce_app/core/networking/api_endpoints.dart';
-import 'package:ecommerce_app/core/networking/api_error_handler.dart';
-import 'package:ecommerce_app/core/networking/dio_helper.dart';
-import 'package:ecommerce_app/features/auth/model/error_model.dart';
-import 'package:ecommerce_app/features/product_screen/model/add_product_model.dart';
+import 'package:tendora/core/networking/api_endpoints.dart';
+import 'package:tendora/core/networking/api_error_handler.dart';
+import 'package:tendora/core/networking/dio_helper.dart';
+import 'package:tendora/features/auth/model/error_model.dart';
+import 'package:tendora/features/product_screen/model/add_product_model.dart';
 
 class AddProductRepo {
   final DioHelper _dioHelper;

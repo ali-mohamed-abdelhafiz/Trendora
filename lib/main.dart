@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/routing/router_generation_config.dart';
-import 'package:ecommerce_app/core/styling/theme_data.dart';
-import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tendora/core/routing/router_generation_config.dart';
+import 'package:tendora/core/styling/theme_data.dart';
+import 'package:tendora/core/utils/service_locator.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

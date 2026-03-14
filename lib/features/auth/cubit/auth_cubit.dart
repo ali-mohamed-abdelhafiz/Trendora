@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/core/utils/storage_helper.dart';
-import 'package:ecommerce_app/features/auth/model/error_model.dart';
-import 'package:ecommerce_app/features/auth/model/login_model.dart';
-import 'package:ecommerce_app/features/auth/repo/auth_repo.dart';
+import 'package:tendora/core/utils/service_locator.dart';
+import 'package:tendora/core/utils/storage_helper.dart';
+import 'package:tendora/features/auth/model/error_model.dart';
+import 'package:tendora/features/auth/model/login_model.dart';
+import 'package:tendora/features/auth/repo/auth_repo.dart';
 
 part 'auth_state.dart';
 

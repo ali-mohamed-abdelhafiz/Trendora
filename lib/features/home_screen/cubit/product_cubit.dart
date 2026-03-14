@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app/features/home_screen/models/product_model.dart';
-import 'package:ecommerce_app/features/home_screen/repo/home_repo.dart';
+import 'package:tendora/features/home_screen/models/product_model.dart';
+import 'package:tendora/features/home_screen/repo/home_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'product_state.dart';

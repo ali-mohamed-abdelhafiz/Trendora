@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/styling/app_colors.dart';
+import 'package:tendora/core/styling/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_app/core/styling/app_styles.dart';
+import 'package:tendora/core/styling/app_styles.dart';
 
 class CategoryItemWidget extends StatelessWidget {
   final String categoryName;

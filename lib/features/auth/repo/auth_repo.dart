@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:ecommerce_app/core/networking/api_endpoints.dart';
-import 'package:ecommerce_app/core/networking/api_error_handler.dart';
-import 'package:ecommerce_app/core/networking/dio_helper.dart';
-import 'package:ecommerce_app/features/auth/model/error_model.dart';
-import 'package:ecommerce_app/features/auth/model/login_model.dart';
+import 'package:tendora/core/networking/api_endpoints.dart';
+import 'package:tendora/core/networking/api_error_handler.dart';
+import 'package:tendora/core/networking/dio_helper.dart';
+import 'package:tendora/features/auth/model/error_model.dart';
+import 'package:tendora/features/auth/model/login_model.dart';
 
 class AuthRepo {
   final DioHelper _dioHelper;

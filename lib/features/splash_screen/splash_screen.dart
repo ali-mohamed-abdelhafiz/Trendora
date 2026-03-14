@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/core/routing/app_routes.dart';
-import 'package:ecommerce_app/core/styling/app_assets.dart';
-import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/core/utils/storage_helper.dart';
+import 'package:tendora/core/routing/app_routes.dart';
+import 'package:tendora/core/styling/app_assets.dart';
+import 'package:tendora/core/utils/service_locator.dart';
+import 'package:tendora/core/utils/storage_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

@@ -1,17 +1,17 @@
-import 'package:ecommerce_app/core/routing/app_routes.dart';
-import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/features/address/address_screen.dart';
-import 'package:ecommerce_app/features/auth/cubit/auth_cubit.dart';
-import 'package:ecommerce_app/features/auth/login_screen.dart';
-import 'package:ecommerce_app/features/auth/register_screen.dart';
-import 'package:ecommerce_app/features/cart/cubit/cart_cubit.dart';
-import 'package:ecommerce_app/features/home_screen/models/product_model.dart';
-import 'package:ecommerce_app/features/main_screen/main_screen.dart';
-import 'package:ecommerce_app/features/product_screen/cubit/add_product_cubit.dart';
-import 'package:ecommerce_app/features/product_screen/product_screen.dart';
-import 'package:ecommerce_app/features/splash_screen/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tendora/core/routing/app_routes.dart';
+import 'package:tendora/core/utils/service_locator.dart';
+import 'package:tendora/features/address/address_screen.dart';
+import 'package:tendora/features/auth/cubit/auth_cubit.dart';
+import 'package:tendora/features/auth/login_screen.dart';
+import 'package:tendora/features/auth/register_screen.dart';
+import 'package:tendora/features/cart/cubit/cart_cubit.dart';
+import 'package:tendora/features/home_screen/models/product_model.dart';
+import 'package:tendora/features/main_screen/main_screen.dart';
+import 'package:tendora/features/product_screen/cubit/add_product_cubit.dart';
+import 'package:tendora/features/product_screen/product_screen.dart';
+import 'package:tendora/features/splash_screen/splash_screen.dart';
 
 class RouterGenerationConfig {
   static GoRouter goRouter =
